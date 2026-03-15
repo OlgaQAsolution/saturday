@@ -12,7 +12,7 @@
     "test:headed": "npx playwright test --headed",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "author": "Olga",
   "license": "ISC",
