@@ -16,18 +16,62 @@ End-to-end tests for the [QA Practice](https://qa-practice.netlify.app/auth_ecom
 
 - **Node.js** = v22.17.1
 
-## Installation
+## Getting Started (Run Locally)
+
+Follow these steps to clone the project and run the tests on your machine.
+
+### Step 1 — Clone the repository
+
+Open your terminal and run:
+
+```bash
+git clone <repo-url>
+cd playwright_shop
+```
+
+> Replace `<repo-url>` with the actual GitHub repository URL (e.g. `https://github.com/username/playwright_shop.git`).
+
+### Step 2 — Open the project in your editor
+
+Open the cloned folder in VS Code (or any editor of your choice):
+
+```bash
+code .
+```
+
+### Step 3 — Install Node dependencies
+
+This installs all required packages listed in `package.json`:
 
 ```bash
 npm install
+```
+
+### Step 4 — Install Playwright browsers
+
+This downloads the browsers Playwright needs to run tests (Chromium, Firefox, WebKit):
+
+```bash
 npx playwright install
 ```
+
+### Step 5 — Run all tests and open the report
+
+This single command runs the full test suite and immediately opens the HTML report in your browser when done:
+
+```bash
+npm run test:report
+```
+
+---
+
+
 
 ## Running Tests
 
 | Command | Description |
 |---------|-------------|
-| `npm test` | All tests (headless) |
+| `npm run test:report` | All tests (headless) |
 | `npm run test:e2e` | E2E suite only |
 | `npm run test:smoke` | Smoke tests (`@smoke` tag) |
 | `npm run test:headed` | All tests with browser visible |
@@ -40,7 +84,7 @@ npx playwright install
 - Browser: **Chromium** (Desktop Chrome, 1920×1080)
 - Reports: **HTML** (`playwright-report/`), **JSON** and **JUnit** (`test-results/`)
 
-## How I Tested Login exept happy flow
+## How did I test login (except happy flow)?
 
 I tested **valid username and invalid password** to make sure the system correctly rejects a login when the user exists but the password is wrong.
 
@@ -59,3 +103,12 @@ For this reason, an **empty password is considered part of the invalid password 
 I use **labels as locators** when finding elements on the login page. This approach automatically verifies that the **label text is correct** and also confirms the **presence of a proper label for accessibility**. 
 
 In addition, I run the tests in **multiple browsers**.
+
+
+## How did I test Shopping Cart — Add multiple items to the cart?
+
+Test 1.2 verifies that a user can add multiple items to the shopping cart. Before adding each item, the test checks all product information — name, price, image, and add to cart button— to make sure what is displayed on the page matches the expected test data. After adding all items, the test verifies that each item appears in the cart with the correct price, quantity, and a REMOVE button. It then confirms that the total price in the cart is calculated correctly based on the sum of all added items.
+
+The test also removes one item from the cart and verifies that both the cart row count and the total price update correctly to reflect the removal.
+
+In addition, the test checks that the **ADD TO CART** button changes its background color when the user hovers over it, confirming that the hover state is visually applied.
