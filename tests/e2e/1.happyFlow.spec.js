@@ -2,8 +2,8 @@ import testData from '../../data/TestData.js';
 import { test, expect } from '../../fixtures/fixtures.js';
 import { getTotalPrice } from '../../utils/helper.js';
 
-test.describe('1. Verify User can submit order with valid credentials', () => {
-    test('1.1. Verify user can add an item to the cart and submit order @smoke', async ({
+test.describe('1. Happy Flow: Verify User can submit order', () => {
+    test('1.1. @smoke Verify user can add an item to the cart and submit order', async ({
         loginPage,
         homePage,
         shippingPage,
@@ -41,7 +41,10 @@ test.describe('1. Verify User can submit order with valid credentials', () => {
         await expect(loginPage.heading, 'Login page heading not visible after logout').toBeVisible();
     });
 
-    test('1.2. Verify User can add multiple items and modify the Shopping Cart', async ({ loginPage, homePage }) => {
+    test('1.2. Shopping Cart: Verify User can add multiple items and modify the cart contents', async ({
+        loginPage,
+        homePage,
+    }) => {
         const { email, password } = testData.validUser;
 
         await loginPage.open(testData.urls.login);

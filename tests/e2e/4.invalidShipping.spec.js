@@ -1,8 +1,8 @@
 import testData from '../../data/TestData.js';
 import { test, expect } from '../../fixtures/fixtures.js';
 
-test.describe('4. Verify User cannot submit order with invalid or empty shipping address', () => {
-    test('4.1. Verify validation errors appear when user tries to submit order with invalid shipping address', async ({
+test.describe('4. Shipping: Verify User cannot submit order with invalid or empty shipping details', () => {
+    test('4.1. Shipping: Verify validation errors appear when user tries to submit order with invalid shipping details', async ({
         loginPage,
         homePage,
         shippingPage,
@@ -41,8 +41,10 @@ test.describe('4. Verify User cannot submit order with invalid or empty shipping
             await shippingPage.clearForm();
             await shippingPage.fillShippingDetails(set.invalidAddress);
 
-            // Verify the error message is displayed
+            // Verify the error message is displayed for test fields
             const errorMessage = await set.missingField.evaluate((el) => el.validationMessage);
+
+            // Verify the error message is not displayed for country dropdown
             if (index === 3) {
                 await expect(errorMessage).toBe('');
 
@@ -50,6 +52,7 @@ test.describe('4. Verify User cannot submit order with invalid or empty shipping
                 await expect(set.missingField, 'Country field is not highlighted').toHaveCSS('color', 'rgb(255, 0, 0)');
             } else {
                 if (test.info().project.name.includes('WebKit')) {
+                    // Verify error message for WebKit browser is different than other browsers
                     await expect(errorMessage, 'Incorrect error message for WebKit').toBe('Fill out this field');
                 } else {
                     await expect(errorMessage, 'Incorrect error message on Shipping page').toBe(

@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/fixtures.js';
 
-test('5.1. @usability Verify User can open Contact page from Login page', async ({ loginPage, contactUsPage }) => {
+test('5.1. Contact Us: Verify User can open Contact page from Login page', async ({ loginPage, contactUsPage }) => {
     await loginPage.open();
 
     // Verify header shows Home, Contact options

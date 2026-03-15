@@ -27,12 +27,16 @@ export default defineConfig({
     use: {
         /* Base URL to use in actions like `await page.goto('/')`. */
         baseURL: process.env.BASE_URL,
-        /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        trace: 'on-first-retry',
+        /* Collect trace on failed test. See https://playwright.dev/docs/trace-viewer */
+        trace: 'retain-on-failure',
         /* Take a screenshot on failure */
         screenshot: 'only-on-failure',
         /* Record a video on failure */
-        video: 'retain-on-failure',
+        video: {
+            mode: 'retain-on-failure',
+            size: process.env.CI ? { width: 800, height: 600 } : { width: 1440, height: 900 },
+        },
+        viewport: { width: 1280, height: 720 },
     },
 
     /* Configure projects for major browsers */
@@ -44,17 +48,17 @@ export default defineConfig({
         },
         {
             name: 'Chromium',
-            use: { ...devices['Desktop Chrome'], viewport: { width: 1920, height: 1080 } },
+            use: { ...devices['Desktop Chrome'] },
         },
-        {
-            name: 'Firefox',
-            use: { ...devices['Desktop Firefox'] },
-            grepInvert: /@screenshot/,
-        },
-        {
-            name: 'WebKit',
-            use: { ...devices['Desktop Safari'] },
-            grepInvert: /@screenshot/,
-        },
+        // {
+        //     name: 'Firefox',
+        //     use: { ...devices['Desktop Firefox'] },
+        //     grepInvert: /@screenshot/,
+        // },
+        // {
+        //     name: 'WebKit',
+        //     use: { ...devices['Desktop Safari'] },
+        //     grepInvert: /@screenshot/,
+        // },
     ],
 });
