@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+package-lock.json
+.env
+test-results/
+playwright-report/
+# Authentication state (created during test setup)
+.auth/
+.vscode/

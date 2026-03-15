@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "lib": ["ES2022", "DOM"],
+    "moduleResolution": "NodeNext",
+    "allowJs": true,
+    "checkJs": false,
+    "strict": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": "."
+  },
+  "include": [
+    "**/*.js",
+    "playwright.config.js",
+    "tests/auth.setup.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "reports",
+    ".auth"
+  ]
+}
