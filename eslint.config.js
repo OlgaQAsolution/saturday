@@ -60,7 +60,6 @@ export default [
             ], // Warn on unused variables (but allow underscore prefix)
             'no-shadow': 'warn', // Warn when variable shadows outer scope
             'no-shadow-restricted-names': 'error', // Prevent shadowing of restricted names (NaN, undefined, etc)
-            'no-use-before-define': 'warn', // Warn on using variable before declaration
 
             'no-duplicate-case': 'error', // Disallow duplicate case labels in switch
             'no-dupe-keys': 'error', // Disallow duplicate keys in object literals

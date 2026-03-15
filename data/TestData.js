@@ -21,8 +21,8 @@ class TestData {
     };
     invalidAddresses = [
         {
-            street : faker.location.streetAddress(),
-            city : faker.location.city(),
+            street: faker.location.streetAddress(),
+            city: faker.location.city(),
             country: 'United States of America',
         },
         {
