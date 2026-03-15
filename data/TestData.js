@@ -1,4 +1,5 @@
 import { getRandom } from '../utils/helper.js';
+import { faker } from '@faker-js/faker';
 
 class TestData {
     validUser = {
@@ -20,24 +21,24 @@ class TestData {
     };
     invalidAddresses = [
         {
-            street: '123 Main St',
-            city: 'New York',
+            street : faker.location.streetAddress(),
+            city: faker.location.city(),
             country: 'United States of America',
         },
         {
-            phone: '1234567890',
-            city: 'New York',
+            phone: faker.phone.number('##########'),
+            city: faker.location.city(),
             country: 'United States of America',
         },
         {
-            phone: '1234567890',
-            street: '123 Main St',
+            phone: faker.phone.number('##########'),
+            street: faker.location.streetAddress(),
             country: 'United States of America',
         },
         {
-            phone: '1234567890',
-            street: '123 Main St',
-            city: 'New York',
+            phone: faker.phone.number('##########'),
+            street: faker.location.streetAddress(),
+            city: faker.location.city(),
         },
     ];
 
